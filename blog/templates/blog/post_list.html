@@ -1,3 +1,5 @@
+{% extends "base_generic.html" %}
+
 {% block content %}
     <h1>Все записи</h1>
 
@@ -7,6 +9,7 @@
       {% for post in post_list %}
       <li>
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <p>{{ post.body }}</p>
       </li>
       {% endfor %}
 

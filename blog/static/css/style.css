@@ -1,0 +1,17 @@
+:root {
+    --main-background: rgb(214, 29, 125);
+}
+
+body {
+    color: #333;
+    background-color: var(--main-background);
+    padding: 50px;
+}
+
+.container-fluid {
+    text-align: left;
+}
+
+header {
+    text-align: center;
+}
