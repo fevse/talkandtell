@@ -25,12 +25,13 @@ body {
 }
 
 .content {
-    background-color: rgb(238, 237, 237);
+    background-color: white;
     padding-top: 10px;
     padding-right: 260px;
     padding-left: 110px;
     padding-bottom: 20px;
     text-align: justify;
+    /* fix it */
     font-size: 18px;
 }
 

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block title %} <title>Talk And Tell</title> {% endblock %}
+
+
+{% block content %}
+<h1>Платформа для ведения блога.</h1>
+    <p>Платформа для ведения блога.</p>
+    <p>Простой и легкий проект на Django. </p>
+
+<h2>Статистика: </h2>
+
+  <ul>
+    <li><strong>Количество постов:</strong> {{ num_posts }}</li>
+  </ul>
+
+  <p>Вы посещали страницу {{ num_visits }}{% if num_visits == 1 %} раз{% else %} раза{% endif %}.</p>
+
+{% endblock %}

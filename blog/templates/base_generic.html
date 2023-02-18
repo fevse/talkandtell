@@ -7,10 +7,6 @@
     {% endblock %}
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -18,18 +14,18 @@
     
 </head>
 
-<header>
-
-    {% block header %}
-    <h1><img src="{% static 'images/logo.png' %}" alt="Logo" style="width:100px;height:100px;"/>Talk And Tell</h1>
-    {% endblock %}
-
-</header>
-
 <body> 
 
-    <div class="content">
+    {% block header %}
+        <header>
+            <h1>
+                <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" style="width:100px;height:100px;"/>Talk And Tell</a>
+                <a href="{% url 'posts' %}">Все посты</a>
+            </h1>
+        </header>
+    {% endblock %}
 
+    <div class="content">
           {% block content %}
           
           {% endblock %}
@@ -51,8 +47,6 @@
                 </div>
             {% endif %}
           {% endblock %}
-
       </div>
-
 </body>
 </html>
