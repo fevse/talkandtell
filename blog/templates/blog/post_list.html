@@ -8,8 +8,8 @@
 
       {% for post in post_list %}
       <li>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>  - {{ post.author }}
-        <p>{{ post.body }}</p>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <p>{{ post.post_date }} - {{ post.author }}</p>
       </li>
       {% endfor %}
 
