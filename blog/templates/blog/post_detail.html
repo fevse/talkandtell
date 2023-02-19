@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+
+  <p><strong>Автор:</strong> {{ post.author }}</a></p>
+  <p><strong>Дата публикации:</strong> {{ post.post_date }}</p>
+  <p> {{ post.body }}</p>
+  
+{% endblock %}
