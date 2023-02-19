@@ -10,7 +10,7 @@ from django.shortcuts import render
 
 
 class Post(models.Model):
-    # author = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200, help_text='title of your post')
     body = models.TextField(max_length=1000, help_text='your post')
 
