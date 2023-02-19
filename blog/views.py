@@ -20,7 +20,7 @@ def index(request):
 
 class PostListView(generic.ListView):
     model = Post
-    paginate_by = 5
+    paginate_by = 10
 
 class PostDetailView(generic.DetailView):
     model = Post
