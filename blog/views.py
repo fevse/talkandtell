@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Post
 from django.views import generic
+from django.urls import reverse, reverse_lazy
 
 # Create your views here.
 def index(request):
@@ -24,3 +25,15 @@ class PostListView(generic.ListView):
 
 class PostDetailView(generic.DetailView):
     model = Post
+
+class PostCreate(generic.CreateView):
+    model = Post
+    fields = ['title', 'body']
+
+class PostUpdate(generic.UpdateView):
+    model = Post
+    fields = ['title', 'body']
+
+class PostDelete(generic.DeleteView):
+    model = Post
+    success_url = reverse_lazy('posts')

@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Удалить пост</h1>
+
+<p>Вы действительно хотите удалить этот пост: {{ post }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Да, удалить его." />
+</form>
+
+{% endblock %}
