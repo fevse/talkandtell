@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Post
 from django.views import generic
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -47,3 +48,6 @@ class TTLoginView(LoginView):
 @login_required
 def profile(request):
     return render(request, 'blog/profile.html')
+
+class TTLogoutView(LoginRequiredMixin, LogoutView):
+    template_name = 'blog/logout.html'

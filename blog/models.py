@@ -18,10 +18,10 @@ class TTUser(AbstractUser):
     
     def __str__(self) -> str:
         return self.username
-    '''
+
     def get_absolute_url(self):
         return reverse('user_detail', args=[str(self.id)])
-    '''
+
 
     class Meta(AbstractUser.Meta):
         pass
@@ -29,8 +29,8 @@ class TTUser(AbstractUser):
 
 class Post(models.Model):
     author = models.ForeignKey('TTUser', on_delete=models.SET_NULL, null=True)
-    title = models.CharField(max_length=200, help_text='title of your post')
-    body = models.TextField(max_length=1000, help_text='your post')
+    title = models.CharField(max_length=100, verbose_name='Заголовок')
+    body = models.TextField(max_length=2000, verbose_name='Основной текст')
     post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:

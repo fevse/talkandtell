@@ -10,5 +10,7 @@ urlpatterns = [
     path('post/<int:pk>/update/', views.PostUpdate.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', views.PostDelete.as_view(), name='post-delete'),
     path('accounts/login/', views.TTLoginView.as_view(), name='login'),
-    path('accounts/profile/', views.profile, name='profile')
+    path('accounts/profile/', views.profile, name='profile'),
+    path('accounts/logout/', views.TTLogoutView.as_view(), name='logout'),
+
 ]
