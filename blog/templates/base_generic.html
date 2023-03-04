@@ -16,7 +16,6 @@
 
 <body> 
 
-    {% block header %}
         <header>
             <h1>
                 <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" style="width:100px;height:100px;"/>Talk And Tell</a>
@@ -28,8 +27,8 @@
                     <a href="{% url 'login' %}">Вход</a>
                 {% endif %}
             </h1>
+            <hr>
         </header>
-    {% endblock %}
 
     <div class="content">
           {% block content %}
@@ -56,6 +55,15 @@
                 </div>
             {% endif %}
           {% endblock %}
-      </div>
+        </div>
+            <footer>
+                <hr>
+                <a href="https://github.com/fevse">
+                    <img src="{% static 'images/github_logo.png' %}" alt="GitHub"/>
+                </a>
+                <a href="https://t.me/vldmrfdlv">
+                    <img src="{% static 'images/telegram_logo.png' %}" alt="Telegram"/>
+                </a>   
+            </footer>
 </body>
 </html>

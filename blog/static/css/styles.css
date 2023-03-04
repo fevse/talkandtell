@@ -8,10 +8,10 @@ header {
     font-weight: bolder;
     background-color: white;
     font-variant: small-caps;
-    padding-top: 1px;
-    padding-right: 60px;
-    padding-left: 60px;
-    padding-bottom: 10px;
+    padding-top: 3px;
+    padding-right: 7%;
+    padding-left: 7%;
+    padding-bottom: 3px;
 }
 
 body {
@@ -19,19 +19,25 @@ body {
     color: #333;
     background-color: var(--main-background);
     padding-top: 10px;
-    padding-right: 330px;
-    padding-left: 330px;
+    padding-right: 17%;
+    padding-left: 17%;
     padding-bottom: 20px;
 }
 
 .content {
     background-color: white;
     padding-top: 10px;
-    padding-right: 260px;
-    padding-left: 110px;
+    padding-right: 10%;
+    padding-left: 10%;
     padding-bottom: 20px;
     text-align: justify;
     font-size: 18px;
+}
+
+footer {
+    text-align: center;
+    background-color: white;
+
 }
 /*
 .pagination {
