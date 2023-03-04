@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Post
 from django.views import generic
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -37,3 +39,11 @@ class PostUpdate(generic.UpdateView):
 class PostDelete(generic.DeleteView):
     model = Post
     success_url = reverse_lazy('posts')
+
+
+class TTLoginView(LoginView):
+    template_name = 'blog/login.html'
+
+@login_required
+def profile(request):
+    return render(request, 'blog/profile.html')
