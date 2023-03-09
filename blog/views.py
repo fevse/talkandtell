@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse, reverse_lazy
+from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -39,6 +40,7 @@ def post_create(request):
         if form.is_valid():
             post = form.save()
             messages.add_message(request, messages.SUCCESS, 'Пост добавлен')
+            return HttpResponseRedirect(reverse('posts'))
     else:
         form = PostForm(initial={'author': request.user.pk})
     context = {'form': form}
