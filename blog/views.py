@@ -1,10 +1,13 @@
-from django.shortcuts import render
-from .models import Post
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+from .models import Post, TTUser
+from .forms import PostForm
 
 # Create your views here.
 def index(request):
@@ -29,9 +32,28 @@ class PostListView(generic.ListView):
 class PostDetailView(generic.DetailView):
     model = Post
 
+@login_required
+def post_create(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            messages.add_message(request, messages.SUCCESS, 'Пост добавлен')
+    else:
+        form = PostForm(initial={'author': request.user.pk})
+    context = {'form': form}
+    return render(request, 'blog/post_create.html', context=context)
+
+
+
+
+''' удалить после проверки функции добавления нового поста
 class PostCreate(generic.CreateView):
     model = Post
     fields = ['title', 'body']
+    initial = {'author': TTUser.username}
+'''
+
 
 class PostUpdate(generic.UpdateView):
     model = Post

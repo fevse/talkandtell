@@ -28,7 +28,8 @@ class TTUser(AbstractUser):
 
 
 class Post(models.Model):
-    author = models.ForeignKey('TTUser', on_delete=models.SET_NULL, null=True)
+    
+    author = models.ForeignKey(TTUser, on_delete=models.SET_NULL, null=True, default=TTUser.id)
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     body = models.TextField(max_length=2000, verbose_name='Основной текст')
     post_date = models.DateTimeField(auto_now_add=True)
