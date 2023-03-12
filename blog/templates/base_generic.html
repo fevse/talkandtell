@@ -30,12 +30,20 @@
                     <a href="{% url 'logout' %}">Выход</a>
                 {% else %}
                     <a href="{% url 'login' %}">Вход</a>
+                    <a href="{% url 'register' %}">Регистрация</a>
                 {% endif %}
             </h2>
             <hr>
         </header>
 
     <div class="content">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
           {% block content %}
           
           {% endblock %}

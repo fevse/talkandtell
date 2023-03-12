@@ -3,7 +3,18 @@
 
 {% block content %}
 
+
+{% if user.first_name and user.last_name %}
+<h2>Профиль пользователя {{ user.first_name }}</h2>
+{% else %}
 <h2>Профиль пользователя {{ user.username }}</h2>
+{% endif %}
 <p>Привет!</p>
+<p>
+    <a href="{% url 'profile_change' %}">Изменить личные данные </a>
+</p>
+<p>
+    <a href="{% url 'password_change' %}">Изменить пароль </a>
+</p>
 
 {% endblock %}

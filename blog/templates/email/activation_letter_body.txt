@@ -1,0 +1,4 @@
+Привет, {{ user.username }}
+
+Для завершения регистрации на сайте "Talk&Tell" перейди по ссылке.
+{{ host }}{% url 'register_activate' sign=sign %}
