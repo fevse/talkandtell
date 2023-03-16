@@ -16,6 +16,7 @@ from .utilites import signer
 # Create your views here.
 def index(request):
     num_posts = Post.objects.all().count()
+    num_users = TTUser.objects.all().count()
     num_visits = request.session.get('num_visits', 0)
 
     request.session['num_visits'] = num_visits+1
@@ -25,6 +26,7 @@ def index(request):
         'index.html',
         context=
         {'num_posts': num_posts,
+         'num_users': num_users,
         'num_visits': num_visits},
     )
 
