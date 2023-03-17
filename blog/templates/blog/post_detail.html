@@ -12,6 +12,16 @@
   {% if user.id == post.author.id %}
   <p><a href="{% url 'post-delete' post.pk %}">Удалить пост</a></p>
   {% endif %}
+  <p><a href="{% url 'comment-create' post.pk %}">Прокомментировать</a></p>
+  <hr>
 
+  {% for comm in post.comment_set.all %}
+  
+  <div class="comments" style="text-align: right">
+    <p>{{ comm.body }}</p>
+    <p>{{ comm.author}} - {{ comm.comment_date}}</p>
+    
+  </div>
+  {% endfor %}
   
 {% endblock %}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 
-from .models import Post, TTUser
+from .models import Post, TTUser, Comment
 from .apps import user_registered
 
 
@@ -11,6 +11,12 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = '__all__'
         widgets = {'author': forms.HiddenInput}
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        widgets = {'author': forms.HiddenInput, 'post': forms.HiddenInput}
 
 
 class ChangeUserInfoForm(forms.ModelForm):

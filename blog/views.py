@@ -9,8 +9,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.core.signing import BadSignature
 
-from .models import Post, TTUser
-from .forms import PostForm, ChangeUserInfoForm, RegisterUserForm
+from .models import Post, TTUser, Comment
+from .forms import PostForm, CommentForm, ChangeUserInfoForm, RegisterUserForm
 from .utilites import signer
 
 # Create your views here.
@@ -37,6 +37,7 @@ class PostListView(generic.ListView):
 
 class PostDetailView(generic.DetailView):
     model = Post
+    paginate_by = 5
 
 @login_required
 def post_create(request):
@@ -115,3 +116,18 @@ def user_activate(request, sign):
         user.is_activated = True
         user.save()
     return render(request, template)
+
+@login_required
+def comment_create(request, pk):
+    note = Post.objects.get(pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save()
+            messages.add_message(request, messages.SUCCESS, 'Коментарий добавлен')
+            return HttpResponseRedirect(reverse_lazy('post_detail', kwargs={'pk': pk}))
+    else:
+        qqq = request
+        form = CommentForm(initial={'author': qqq.user.pk, 'post': note})
+    context = {'form': form}
+    return render(request, 'blog/comment_create.html', context=context)

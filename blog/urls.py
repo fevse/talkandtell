@@ -9,6 +9,7 @@ urlpatterns = [
     path('post/create/', views.post_create, name='post-create'),
     path('post/<int:pk>/update/', views.PostUpdate.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', views.PostDelete.as_view(), name='post-delete'),
+    path('post/<int:pk>/comment/', views.comment_create, name='comment-create'),
     path('accounts/register/activate/<str:sign>/', views.user_activate, name='register_activate'),
     path('accounts/register/done/', views.RegisterDoneView.as_view(), name='register_done'),
     path('accounts/register/', views.RegisterUserView.as_view(), name='register'),
