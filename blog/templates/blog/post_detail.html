@@ -12,17 +12,22 @@
   {% if user.id == post.author.id %}
   <p><a href="{% url 'post-delete' post.pk %}">Удалить пост</a></p>
   {% endif %}
+  {% if user.is_authenticated %}
   <p><a href="{% url 'comment-create' post.pk %}">Прокомментировать</a></p>
+  {% endif %}
+
   <hr>
-  <h2>Комментарии</h2>
-  {% for comm in post.comment_set.all %}
-  
+
   <div class="comments" style="text-align: right">
-    
-    <p>{{ comm.body }}</p>
-    <p>{{ comm.author}} - {{ comm.comment_date}}</p>
-    
-  </div>
-  {% endfor %}
+    <h3>Комментарии: </h2>
+    <hr>
+    {% for comm in post.comment_set.all %}
   
+    
+      <p>{{ comm.body }}</p>
+      <p><i>{{ comm.author}} - {{ comm.comment_date}}</i></p>
+    
+    {% endfor %}
+  </div>
+
 {% endblock %}
