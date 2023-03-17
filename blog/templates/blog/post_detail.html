@@ -18,6 +18,7 @@
   {% for comm in post.comment_set.all %}
   
   <div class="comments" style="text-align: right">
+    <h2>Комментарии</h2>
     <p>{{ comm.body }}</p>
     <p>{{ comm.author}} - {{ comm.comment_date}}</p>
     
