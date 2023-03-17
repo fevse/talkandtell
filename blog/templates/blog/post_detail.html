@@ -14,11 +14,11 @@
   {% endif %}
   <p><a href="{% url 'comment-create' post.pk %}">Прокомментировать</a></p>
   <hr>
-
+  <h2>Комментарии</h2>
   {% for comm in post.comment_set.all %}
   
   <div class="comments" style="text-align: right">
-    <h2>Комментарии</h2>
+    
     <p>{{ comm.body }}</p>
     <p>{{ comm.author}} - {{ comm.comment_date}}</p>
     
