@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.db.models import Q 
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
@@ -131,3 +132,14 @@ def comment_create(request, pk):
         form = CommentForm(initial={'author': qqq.user.pk, 'post': note})
     context = {'form': form}
     return render(request, 'blog/comment_create.html', context=context)
+
+class SearchResultsView(generic.ListView):
+    model = Post
+    template_name = 'search_results.html'
+
+    def get_queryset(self): # новый
+        query = self.request.GET.get('q')
+        object_list = Post.objects.filter(
+            Q(title__icontains=query) | Q(body__icontains=query) | Q(author__username__icontains=query)
+        )
+        return object_list

@@ -32,6 +32,10 @@
                     <a href="{% url 'login' %}">Вход</a>
                     <a href="{% url 'register' %}">Регистрация</a>
                 {% endif %}
+                <form action="{% url 'search_results' %}" method="get">
+                    <input name="q" type="text" placeholder="Search...">
+                    <input type="submit" value="Поиск" />
+                </form>
             </h2>
             <hr>
         </header>
