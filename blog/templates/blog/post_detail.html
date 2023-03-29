@@ -6,7 +6,10 @@
   <p><a href="{% url 'post-update' post.pk %}">Редактировать пост</a></p>
   {% endif %}
   <p></p>
-  <p><strong>Автор:</strong> {{ post.author }}</a></p>
+  <p><strong>Автор:</strong> 
+    {% if post.author.first_name and post.author.last_name %} {{ post.author.first_name }} {{ post.author.last_name }}
+    {% else %} {{ post.author.username }}
+    {% endif %}</a></p>
   <p><strong>Дата публикации:</strong> {{ post.post_date }}</p>
   <p> {{ post.body }}</p>
   {% if user.id == post.author.id %}
@@ -25,7 +28,11 @@
   
     
       <p>{{ comm.body }}</p>
-      <p><i>{{ comm.author}} - {{ comm.comment_date}}</i></p>
+      <p><i>
+        {% if comm.author.first_name and comm.author.last_name %} {{ comm.author.first_name }} {{ comm.author.last_name }}
+        {% else %} {{ comm.author.username }}
+        {% endif %}
+        - {{ comm.comment_date }}</i></p>
     
     {% endfor %}
   </div>

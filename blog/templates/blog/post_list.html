@@ -9,7 +9,10 @@
       {% for post in post_list %}
       <li>
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        <p>{{ post.post_date }} - {{ post.author }}</p>
+        <p>{{ post.post_date }} - 
+            {% if post.author.first_name and post.author.last_name %} {{ post.author.first_name }} {{ post.author.last_name }}
+            {% else %} {{ post.author.username }}
+            {% endif %}</p>
       </li>
       {% endfor %}
 
