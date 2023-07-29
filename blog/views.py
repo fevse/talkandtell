@@ -19,16 +19,17 @@ def index(request):
     num_posts = Post.objects.all().count()
     num_users = TTUser.objects.all().count()
     num_visits = request.session.get('num_visits', 0)
-
-    request.session['num_visits'] = num_visits+1
+    request.session['num_visits'] = num_visits + 1
+    context = {
+    	'num_posts': num_posts,
+        'num_users': num_users,
+        'num_visits': num_visits
+        }
 
     return render(
         request,
         'index.html',
-        context=
-        {'num_posts': num_posts,
-         'num_users': num_users,
-        'num_visits': num_visits},
+        context=context,
     )
 
 
@@ -137,7 +138,7 @@ class SearchResultsView(generic.ListView):
     model = Post
     template_name = 'search_results.html'
 
-    def get_queryset(self): # новый
+    def get_queryset(self):
         query = self.request.GET.get('q')
         object_list = Post.objects.filter(
             Q(title__icontains=query) | Q(body__icontains=query) | Q(author__username__icontains=query)
